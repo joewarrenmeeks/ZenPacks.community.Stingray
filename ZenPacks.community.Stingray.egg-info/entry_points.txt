@@ -1,0 +1,3 @@
+[zenoss.zenpacks]
+ZenPacks.community.Stingray = ZenPacks.community.Stingray
+
