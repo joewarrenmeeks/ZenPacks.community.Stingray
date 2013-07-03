@@ -3,9 +3,6 @@ from Products.DataCollector.plugins.CollectorPlugin \
 
 from Products.DataCollector.plugins.DataMaps import MultiArgs, ObjectMap
 
-# So, the Stingray agent doesn't give all the good 
-# Ethernet info, like HOSTMIB does. But something is better
-# than nothing.
 
 class StingrayEthernetInterfaces(SnmpPlugin):
     relname = "ethernet_interfaces"

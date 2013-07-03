@@ -15,6 +15,12 @@
         factory=".info.StingrayPoolInfo"
         />
 
+    <adapter
+        provides=".interfaces.IStingrayNodeInfo"
+        for=".StingrayNode.StingrayNode"
+        factory=".info.StingrayNodeInfo"
+        />
+
     <!-- Includes: Browser Configuration -->
     <include package=".browser"/>
 

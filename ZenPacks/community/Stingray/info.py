@@ -8,6 +8,7 @@ from ZenPacks.community.Stingray.interfaces import (
     IStingrayDeviceInfo,
     IStingrayVirtualServerInfo,
     IStingrayPoolInfo,
+    IStingrayNodeInfo,
     )
 
 class StingrayVirtualServerInfo(ComponentInfo):
@@ -20,3 +21,8 @@ class StingrayPoolInfo(ComponentInfo):
     implements(IStingrayPoolInfo)
 
     poolAlgorithm = ProxyProperty('poolAlgorithm')
+
+class StingrayNodeInfo(ComponentInfo):
+    implements(IStingrayNodeInfo)
+
+    nodePort = ProxyProperty('nodePort')

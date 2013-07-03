@@ -6,7 +6,6 @@ from Products.ZenRelations.RelSchema import ToManyCont, ToOne
 class StingrayVirtualServer(DeviceComponent, ManagedEntity):
     meta_type = portal_type = 'StingrayVirtualServer'
 
-    # Again, these are used for the column headers
     virtualServerName = ""
     virtualServerDefaultPool = ""
     snmpindex = -1

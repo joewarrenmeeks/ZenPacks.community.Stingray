@@ -72,10 +72,6 @@ ZC.StingrayVirtualServerPanel = Ext.extend(ZC.ComponentGridPanel, {
 
 Ext.reg('StingrayVirtualServerPanel', ZC.StingrayVirtualServerPanel);
 
-ZC.registerName(
-  'StingrayVirtualServer',
-  _t('Virtual Server'),
-  _t('Virtual Servers'));
 
 
 ZC.StingrayPoolPanel = Ext.extend(ZC.ComponentGridPanel, {
@@ -138,6 +134,71 @@ ZC.StingrayPoolPanel = Ext.extend(ZC.ComponentGridPanel, {
 
 Ext.reg('StingrayPoolPanel', ZC.StingrayPoolPanel);
 
+ZC.StingrayNodePanel = Ext.extend(ZC.ComponentGridPanel, {
+    constructor: function(config) {
+        config = Ext.applyIf(config||{}, {
+            componentType: 'StingrayNode',
+            autoExpandColumn: 'name',
+            sortInfo: {
+                field: 'name',
+                direction: 'ASC'
+            },
+            fields: [
+                {name: 'uid'},
+                {name: 'name'},
+                {name: 'status'},
+                {name: 'severity'},
+                {name: 'usesMonitorAttribute'},
+                {name: 'monitor'},
+                {name: 'monitored'},
+                {name: 'nodePort'},
+                {name: 'locking'}
+            ],
+            columns: [{
+                id: 'severity',
+                dataIndex: 'severity',
+                header: _t('Events'),
+                renderer: Zenoss.render.severity,
+                sortable: true,
+                width: 50
+            },{
+                id: 'name',
+                dataIndex: 'name',
+                header: _t('Name'),
+                sortable: true,
+                width: 150
+            },{
+                id: 'nodePort',
+                dataIndex: 'nodePort',
+                header: _t('Port'),
+                sortable: true,
+                width: 100
+            },{
+                id: 'monitored',
+                dataIndex: 'monitored',
+                header: _t('Monitored'),
+                renderer: Zenoss.render.checkbox,
+                sortable: true,
+                width: 70
+            },{
+                id: 'locking',
+                dataIndex: 'locking',
+                header: _t('Locking'),
+                renderer: Zenoss.render.locking_icons,
+                width: 65
+            }]
+        });
+        ZC.StingrayNodePanel.superclass.constructor.call( this, config);
+  }
+});
+
+Ext.reg('StingrayNodePanel', ZC.StingrayNodePanel);
+
+ZC.registerName(
+  'StingrayNode',
+  _t('Stingray Node'),
+  _t('Stingray Nodes'));
+
 ZC.registerName(
   'StingrayPool',
   _t('Stingray Pool'),
@@ -147,6 +208,11 @@ ZC.registerName(
     'StingrayEthernetInterface',
     _t('Ethernet Interface'),
     _t('Ethernet Interfaces'));
+
+ZC.registerName(
+  'StingrayVirtualServer',
+  _t('Virtual Server'),
+  _t('Virtual Servers'));
 
 })();
 

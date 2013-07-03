@@ -4,9 +4,6 @@ from Products.DataCollector.plugins.CollectorPlugin \
 from Products.DataCollector.plugins.DataMaps import MultiArgs, ObjectMap
 
 
-# Pools are a group of servers used to service
-# virtualsevers
-
 class StingrayPools(SnmpPlugin):
     relname = "pools"
     modname = "ZenPacks.community.Stingray.StingrayPool"
@@ -32,11 +29,6 @@ class StingrayPools(SnmpPlugin):
                 log.warn('Skipping Pool with no name')
                 continue
 
-            # So, not sure if there is a better way, but the MIB defines
-            # the alogrithms as numbers, which need to be mapped to 
-            # text descriptions. I haven't found a way to use the MIB or API
-            # to do the mapping, so look below for the _zxtmalg() method
-            # (to be honest, I didn't look very hard)
             alg = self._zxtmalg(row.get('poolAlgorithm'))
 
             rm.append(self.objectMap({
@@ -52,13 +44,11 @@ class StingrayPools(SnmpPlugin):
 
     def _zxtmalg(self, alg):
 
-        # In case it comes back with an error
         try:
             algy = int(alg)
         except TypeError:
             print("{0} is not an integer".format(alg))
 
-        # Map integer to algorithm
         if algy == 1:
             alg = "roundrobin"
         elif algy == 2:
@@ -76,5 +66,4 @@ class StingrayPools(SnmpPlugin):
         else:
             alg = "whiskytangofoxtrot"
 
-        # Send it back whence it came
         return alg

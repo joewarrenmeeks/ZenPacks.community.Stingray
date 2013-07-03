@@ -3,9 +3,6 @@ from Products.ZenRelations.RelSchema import ToManyCont, ToOne
 
 class StingrayDevice(Device):
 
-
-    # Define the relations.
-    # Pools and VirtualServers can be treated as components.
     _relations = Device._relations + (
         ('pools', ToManyCont(ToOne,
             "ZenPacks.community.Stingray.StingrayPool", "pool")),
@@ -16,7 +13,9 @@ class StingrayDevice(Device):
     ) + (
         ('ethernet_interfaces', ToManyCont(ToOne,
             "ZenPacks.community.Stingray.StingrayEthernetInterface", "nic")),
+    ) + (
+        ('nodes', ToManyCont(ToOne,
+            "ZenPacks.community.Stingray.StingrayNode", "node")),
     )
-
 
 

@@ -14,3 +14,5 @@ class IStingrayVirtualServerInfo(IComponentInfo):
 class IStingrayPoolInfo(IComponentInfo):
     poolAlgorithm = schema.TextLine(title=_t('Algorithm'))
 
+class IStingrayNodeInfo(IComponentInfo):
+    nodePort = schema.Int(title=_t('Port'))

@@ -6,7 +6,6 @@ from Products.ZenRelations.RelSchema import ToManyCont, ToOne
 class StingrayPool(DeviceComponent, ManagedEntity):
     meta_type = portal_type = 'StingrayPool'
 
-    # Need these for the javascripty column headers
     poolName = ""
     poolAlgorithm = ""
     snmpindex = -1
