@@ -29,6 +29,10 @@ class StingrayPools(SnmpPlugin):
                 log.warn('Skipping Pool with no name')
                 continue
 
+            if name == "discard":
+                log.warn('Skipping discard pool')
+                continue
+
             alg = self._zxtmalg(row.get('poolAlgorithm'))
 
             rm.append(self.objectMap({
